@@ -14,7 +14,6 @@ interface Fine {
 
 export default function FinesPage() {
   const [fines, setFines] = useState<Fine[]>([]);
-  const [fetchTime, setFetchTime] = useState<string>("");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -28,7 +27,6 @@ export default function FinesPage() {
     const finesRef = ref(database, 'fines');
     const unsubscribe = onValue(finesRef, (snapshot) => {
       const currentTime = new Date().toISOString(); // Get ISO string of current time
-      setFetchTime(currentTime);
       
       try {
         const data = snapshot.val();
