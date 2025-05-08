@@ -26,7 +26,6 @@ export default function FinesPage() {
   useEffect(() => {
     const finesRef = ref(database, 'fines');
     const unsubscribe = onValue(finesRef, (snapshot) => {
-      const currentTime = new Date().toISOString(); // Get ISO string of current time
       
       try {
         const data = snapshot.val();
